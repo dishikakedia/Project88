@@ -1,13 +1,15 @@
 var canvas = new fabric.Canvas('myCanvas');
 
-player_x = 10;
-player_y = 10;
+var player_x = 150;
+var player_y = 150;
 
-block_image_height = 30;
-block_image_width = 30;
+var block_image_height = 100;
+var block_image_width = 100;
 
 var player_object = "";
 var block_image_object = "";
+
+window.addEventListener("keydown", my_keydown);
 
 function player_update() {
     fabric.Image.fromURL("player.png", function(Img) {
@@ -23,7 +25,7 @@ function player_update() {
 }
 
 function new_image(get_image) {
-    fabric.Image.fromURL("get_image", function(Img) {
+    fabric.Image.fromURL(get_image, function(Img) {
         block_image_object = Img;
         block_image_object.scaleToWidth(block_image_width);
         block_image_object.scaleToHeight(block_image_height);
@@ -39,7 +41,7 @@ function my_keydown(e) {
     keyPressed = e.keyCode;
     console.log(keyPressed);
 
-    if (e.shiftkey == true && keyPressed == '80') {
+    if (e.shiftKey == true && keyPressed == '80') {
         console.log("p and shift pressed together");
         block_image_width = block_image_width + 10;
         block_image_height = block_image_height + 10;
@@ -47,7 +49,7 @@ function my_keydown(e) {
         document.getElementById("current_height").innerHTML = block_image_height;
     }
 
-    if (e.shiftkey == true && keyPressed == '77') {
+    if (e.shiftKey == true && keyPressed == '77') {
         console.log("m and shift pressed together");
         block_image_width = block_image_width - 10;
         block_image_height = block_image_height - 10;
@@ -84,7 +86,7 @@ function my_keydown(e) {
     }
 
     if (keyPressed == '66') {
-        new_image('spiderman_face.png');
+        new_image('spiderman_body.png');
         console.log("b");
     }
 
@@ -98,9 +100,9 @@ function my_keydown(e) {
         console.log("r");
     }
 
-    if (keyPressed == '89') {
+    if (keyPressed == '72') {
         new_image('captain_america_left_hand.png');
-        console.log("y");
+        console.log("h");
     }
 
 
